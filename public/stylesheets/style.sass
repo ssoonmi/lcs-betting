@@ -1,6 +1,96 @@
-body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+$nav-bar-height: 36px
+$font-color: #f1e6d0
+$link-color: #c9aa71
+$link-background-color: black
+$active-link-color: white
 
-a
-  color: #00B7FF
+$team-show-color: black
+
+body
+  width: 100%
+  height: 100%
+
+
+.active
+  font-weight: bold
+  color: $active-link-color
+  
+
+* 
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-size: 16px
+  font-family: Helvetica, Arial, sans-serif
+  font-weight: normal
+  color: $font-color
+
+
+a 
+  color: $link-color
+  text-decoration: none
+  display: block
+
+
+ul 
+  list-style: none
+
+
+main 
+  margin-top: 36px
+
+
+nav 
+  display: flex
+  background-color: $link-background-color
+  position: fixed
+  height: 36px
+  top: 0
+  right: 0
+  left: 0
+  justify-content: space-around
+  align-items: center
+
+  h1 
+    display: block
+  
+  ul 
+    display: flex
+
+    li
+      margin-right: 30px
+
+.team-index
+  display: flex
+  padding-left: 10px
+  padding-top: 20px
+
+$team-index-list-width: 150px
+$team-show-side-margin: 20px
+
+.team-index-list
+  width: $team-index-list-width
+
+  li
+    margin-bottom: 5px
+
+  a
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    background-color: $link-background-color
+    padding: 10px
+    font-size: 18px
+    border-bottom: 0
+    border-radius: 8px
+
+.team-show
+  margin: 0 $team-show-side-margin
+  padding: 20px
+  border: 7px solid lightgray
+  width: calc(100% - 190px)
+
+  h2
+    font-size: 20px
+    color: $team-show-color
