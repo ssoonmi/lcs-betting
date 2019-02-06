@@ -7,15 +7,17 @@ class TeamShow extends React.Component {
     const { team } = this.props;
     return (
       <section className="team-show">
-        <h2>{team.name}</h2>
+        <div>
+          <h2>{team.name}</h2>
+        </div>
       </section>
     );
   }
 }
 
 const msp = (state, ownProps) => {
-  const teamName = ownProps.match.params.teamName;
-  const team = state.teams[teamName] || {};
+  const teamId = ownProps.teamId;
+  const team = state.teams[teamId] || {};
   return {
     team
   };

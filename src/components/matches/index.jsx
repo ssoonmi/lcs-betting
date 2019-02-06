@@ -1,31 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
-import { fetchMatches } from '../../actions/match_actions';
-import MatchShow from './show.jsx';
+import { NavLink, withRouter, Link } from 'react-router-dom';
+// import { fetchMatches } from '../../actions/match_actions';
 
 class MatchIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchMatches();
-  }
 
   render() {
-    const { matches, matchDates, matchDate } = this.props;
-    const matchLis = matches.map((matchDay, idx1) => {
+    const { matches, matchDate, teams } = this.props;
+    const weeks = matches.weeks || {};
+    const matchLis = Object.keys(weeks).sort().map((week, idx1) => {
+      const days = Object.keys(matches.weeks[week].days);
       return (
-        <li key={idx1}>
-          <NavLink to={`/matches/${matchDates[idx1]}`}>Day: {matchDates[idx1]}</NavLink>
-          <ul>
-            {Object.values(matchDay).map((match, idx2) => {
-              return (
-                <li key={idx2}>
-                  {match.team1} vs. {match.team2}
-                </li>
-              );
-            })}
-          </ul>
-        </li>
-      );   
+        days.sort().map((day, idx2) => {
+          const times = Object.keys(matches.weeks[week].days[day].matches);
+          return (
+            <li key={idx2}>
+              <Link to={`/matches/week/${week}/day/${day}`}>
+                <h3>Week { week } Day { day }</h3>
+              </Link>
+              <ul>
+                {times.sort().map((time, idx3) => {
+                  const match = matches.weeks[week].days[day].matches[time];
+                  const team1 = teams[match.team1Id].acronym;
+                  const team2 = teams[match.team2Id].acronym;
+                  return (
+                    <li key={idx3}>
+                      {new Date(time).toLocaleTimeString()}
+                      <div>
+                        <Link to={`/teams/${team1}`} >{team1}</Link>
+                          vs.
+                        <Link to={`/teams/${team2}`} >{team2}</Link>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </li>
+          );
+        })
+      );
     });
     return (
       <article className="match-index">
@@ -34,7 +47,6 @@ class MatchIndex extends React.Component {
             {matchLis}
           </ul>
         </section>
-        {matchDate ? <MatchShow/> : null}
       </article>
     )
   }
@@ -43,15 +55,15 @@ class MatchIndex extends React.Component {
 const msp = (state, ownProps) => {
   return {
     matchDate: ownProps.match.params.date,
-    matchDates: Object.keys(state.matches),
-    matches: Object.values(state.matches)
+    matches: state.matches,
+    teams: state.teams
   };
-}
+};
 
-const mdp = dispatch => {
-  return {
-    fetchMatches: () => dispatch(fetchMatches())
-  };
-}
+// const mdp = dispatch => {
+//   return {
+//     fetchMatches: () => dispatch(fetchMatches())
+//   };
+// };
 
-export default withRouter(connect(msp, mdp)(MatchIndex));
+export default withRouter(connect(msp, null)(MatchIndex));

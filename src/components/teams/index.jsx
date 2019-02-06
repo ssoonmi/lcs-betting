@@ -5,15 +5,16 @@ import { connect } from 'react-redux';
 import TeamShow from './show';
 
 class TeamIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchTeams();
-  }
 
   render() {
-    const { teams } = this.props;
+    const { teams, teamName } = this.props;
+    let teamId;
     const teamLis = teams.map((team, idx) => {
+      if (teamName == team.acronym) {
+        teamId = team.team;
+      }
       return (
-        <li key={idx}><NavLink to={`/teams/${team.tag}`}>{team.tag}</NavLink></li>
+        <li key={idx}><NavLink to={`/teams/${team.acronym}`}>{team.acronym}</NavLink></li>
       );
     });
     return (
@@ -23,7 +24,7 @@ class TeamIndex extends React.Component {
             {teamLis}
           </ul>
         </section>
-        {this.props.teamName ? <TeamShow/> : null}
+        {teamId ? <TeamShow teamId={teamId}/> : null}
       </article>
 
     );
@@ -37,10 +38,10 @@ const msp = (state, ownProps) => {
   };
 };
 
-const mdp = dispatch => {
-  return {
-    fetchTeams: () => dispatch(fetchTeams())
-  };
-}
+// const mdp = dispatch => {
+//   return {
+//     fetchTeams: () => dispatch(fetchTeams())
+//   };
+// }
 
-export default withRouter(connect(msp,mdp)(TeamIndex));
+export default withRouter(connect(msp, null)(TeamIndex));

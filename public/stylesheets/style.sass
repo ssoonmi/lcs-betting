@@ -7,23 +7,18 @@ $active-link-color: white
 $team-show-color: black
 
 body
-  width: 100%
-  height: 100%
-
-
-.active
-  font-weight: bold
-  color: $active-link-color
-  
+  font-size: 16px
+  font-family: Helvetica, Arial, sans-serif
+  color: $font-color
 
 * 
   margin: 0
   padding: 0
   box-sizing: border-box
-  font-size: 16px
-  font-family: Helvetica, Arial, sans-serif
+  font-size: inherit
+  font-family: inherit
   font-weight: normal
-  color: $font-color
+  color: inherit
 
 
 a 
@@ -31,6 +26,9 @@ a
   text-decoration: none
   display: block
 
+.active
+  font-weight: bold
+  color: $active-link-color
 
 ul 
   list-style: none
@@ -60,10 +58,9 @@ nav
     li
       margin-right: 30px
 
-.team-index
+.team-index, .match-index
   display: flex
-  padding-left: 10px
-  padding-top: 20px
+  padding: 20px 10px
 
 $team-index-list-width: 150px
 $team-show-side-margin: 20px
@@ -87,10 +84,45 @@ $team-show-side-margin: 20px
 
 .team-show
   margin: 0 $team-show-side-margin
-  padding: 20px
   border: 7px solid lightgray
   width: calc(100% - 190px)
+
+  > div
+    padding: 20px
+    height: 100%
+    width: 100%
+    box-shadow: 0px 0px 8px 1px gray
 
   h2
     font-size: 20px
     color: $team-show-color
+
+$match-index-list-color: black
+
+.match-index-list
+  width: 100%
+
+  ul
+    display: flex
+    flex-direction: column
+    width: 100%
+
+    li
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding: 20px 10px
+      background-color: $match-index-list-color
+      border-radius: 8px
+      margin-bottom: 5px
+      font-size: 18px
+
+      > a
+        width: fit-content
+        margin-bottom: 10px
+
+      > div
+        display: flex
+  
+  h3
+    margin-bottom: 10px
