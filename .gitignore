@@ -17,3 +17,5 @@
 /node_modules
 
 /src/firebase.js
+
+.sass-cache/
