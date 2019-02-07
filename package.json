@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --watch --mode=development",
+    "sass": "sass --watch public/stylesheets"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",

@@ -19,11 +19,13 @@ export default function (state = {}, action) {
             match.scheduledTime = action.allMatches[i].scheduledTime;
             match.tags = action.allMatches[i].tags;
             match.tournament = action.allMatches[i].tournament;
-
-            if (match.scores[match.team1Id] > match.scores[match.team2Id]) {
-              match.winningTeamId = match.team1Id;
-            } else {
-              match.winningTeamId = match.team2Id;
+            match.winningTeamId = null;
+            if (match.state == 'resolved') {
+              if (match.scores[match.team1Id] > match.scores[match.team2Id]) {
+                match.winningTeamId = match.team1Id;
+              } else {
+                match.winningTeamId = match.team2Id;
+              }
             }
 
             newState.weeks = newState.weeks || {};

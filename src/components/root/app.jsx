@@ -10,10 +10,12 @@ import Login from '../session/login';
 import SignUp from '../session/signup';
 
 import { fetchLCSData } from '../../actions/match_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchLCSData();
+    this.props.fetchUsers();
   }
 
   render() {
@@ -37,7 +39,8 @@ class App extends React.Component {
 
 const mdp = dispatch => {
   return {
-    fetchLCSData: () => dispatch(fetchLCSData())
+    fetchLCSData: () => dispatch(fetchLCSData()),
+    fetchUsers: () => dispatch(fetchUsers()),
   }
 };
 

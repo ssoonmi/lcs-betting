@@ -21,7 +21,6 @@ export const fetchMatches = () => dispatch => {
 
 export const fetchLCSData = () => dispatch => {
   function receiveLCSData() {
-    debugger
     const data = JSON.parse(this.responseText);
     const lcs = data.highlanderTournaments[6];
     const gameIds = lcs.gameIds; //array

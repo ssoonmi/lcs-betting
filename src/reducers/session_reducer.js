@@ -11,7 +11,7 @@ export default function(state = defaultState, action) {
     let newState;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return { currentUser: action.user.username, errors: [] };
+            return { currentUser: action.username, errors: [] };
         case REMOVE_CURRENT_USER: 
             return defaultState;
         case RECEIVE_SESSION_ERRORS:

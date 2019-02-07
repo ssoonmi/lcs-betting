@@ -1,18 +1,12 @@
-import { RECEIVE_CURRENT_USER, REMOVE_CURRENT_USER } from "../actions/user_actions";
-import { merge } from 'lodash';
+import { RECEIVE_USERS } from "../actions/user_actions";
 
 const defaultState = {};
 
 export default function (state = defaultState, action) {
   Object.freeze(state);
-  let newState;
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return merge({}, state, {[action.user.username]: action.user});
-    case REMOVE_CURRENT_USER:
-      newState = merge({}, state);
-      delete newState[action.username];
-      return newState;
+    case RECEIVE_USERS: 
+      return action.users || {};
     default:
       return state;
   }
