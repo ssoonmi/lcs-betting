@@ -66,42 +66,66 @@ nav
 
 .team-index, .match-index
   display: flex
-  padding: 20px 10px
+  height: -webkit-fill-available
+  background: #15171a
 
 $team-index-list-width: 150px
 $team-show-side-margin: 20px
 
 .team-index-list
-  width: $team-index-list-width
+  // width: $team-index-list-width
+  width: 30%
+  overflow: scroll
 
   li
-    margin-bottom: 5px
+    // margin-bottom: 5px
+    background-color: #0e1012
 
   a
     display: flex
     align-items: center
     justify-content: center
     width: 100%
-    background-color: $link-background-color
-    padding: 10px
+    padding: 30px
     font-size: 18px
-    border-bottom: 0
-    border-radius: 8px
+    border-bottom: 1px solid #292d31
+    font-family: 'Montserrat'
+
+  &::-webkit-scrollbar
+    height: 14px
+    width: 14px
+    background-color: #0e1012
+    margin: 0 10px
+
+  &::-webkit-scrollbar-corner
+    background: #0e1012
+
+  &::-webkit-scrollbar-thumb
+    background: #292d31
+    -webkit-border-radius: 1ex
+    border: 3px solid #0e1012
+
+    // border-radius: 8px
 
 .team-show
-  margin: 0 $team-show-side-margin
-  border: 7px solid lightgray
-  width: calc(100% - 190px)
+  // margin: 0 $team-show-side-margin
+  // border: 7px solid lightgray
+  // width: calc(100% - 190px)
+  width: 70%
+  background: #15171a
 
   > div
     padding: 20px
     height: 100%
     width: 100%
-    box-shadow: 0px 0px 8px 1px gray
+    // box-shadow: 0px 0px 8px 1px gray
 
   h2
-    font-size: 20px
-    color: $team-show-color
+    font-size: 30px
+    font-family: 'montserrat'
+    text-align: center
+    // color: $team-show-color
+    color: #c9aa71
 
 $match-index-list-color: black
 
