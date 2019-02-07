@@ -37,11 +37,11 @@ nav {
   left: 0;
   justify-content: space-between;
   align-items: center;
-  font-family: "Montserrat", sans-serif; }
+  font-family: 'Montserrat', sans-serif; }
   nav h1 {
     display: block;
     margin: 0 12vw;
-    font-family: "carter one";
+    font-family: 'carter one';
     font-size: 20px; }
   nav ul {
     display: flex;
@@ -68,7 +68,7 @@ nav {
     padding: 30px;
     font-size: 18px;
     border-bottom: 1px solid #292d31;
-    font-family: "Montserrat"; }
+    font-family: 'Montserrat'; }
   .team-index-list::-webkit-scrollbar {
     height: 14px;
     width: 14px;
@@ -90,7 +90,7 @@ nav {
     width: 100%; }
   .team-show h2 {
     font-size: 30px;
-    font-family: "montserrat";
+    font-family: 'montserrat';
     text-align: center;
     color: #c9aa71; }
 
@@ -136,7 +136,7 @@ nav {
   padding: 2em;
   width: 400px; }
   .session-form-container h2 {
-    font-family: "Carter One", cursive;
+    font-family: 'Carter One', cursive;
     font-size: 28px;
     text-transform: uppercase; }
   .session-form-container a {
@@ -152,7 +152,7 @@ nav {
   align-items: center; }
   .session-form label {
     font-size: 12px;
-    margin-top: 0.5em;
+    margin-top: .5em;
     text-align: left;
     width: 100%;
     color: #a09b8c; }
@@ -164,7 +164,7 @@ nav {
     background-color: #1e2328;
     transition: border-color 0s;
     outline: none;
-    padding: 0.5em 0.75em; }
+    padding: .5em .75em; }
     .session-form input:focus {
       border-color: #a98f5d;
       background: linear-gradient(to bottom, #1e2328, #292d30);
@@ -176,10 +176,10 @@ nav {
   border-width: 1px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset, 0 0 0 1px rgba(0, 0, 0, 0.25);
   font-size: 14px;
-  margin-top: 0.5em; }
+  margin-top: .5em; }
 
 .session-form-submit {
-  font-family: "Carter One", cursive;
+  font-family: 'Carter One', cursive;
   border-width: 2px;
   margin: 2em 1em 1em 1em;
   text-transform: uppercase;
