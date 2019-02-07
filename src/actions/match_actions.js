@@ -1,5 +1,7 @@
 import firebase from '../firebase';
 
+import { beginLoading, finishLoading } from './ui_actions';
+
 export const RECEIVE_MATCHES = 'RECEIVE_MATCHES';
 export const RECEIVE_LCS_DATA = 'RECEIVE_LCS_DATA';
 
@@ -39,11 +41,13 @@ export const fetchLCSData = () => dispatch => {
       teams,
       allTeams
     });
+    dispatch(finishLoading());
   }
   
   const oReq = new XMLHttpRequest();
   oReq.onload = receiveLCSData; // same as: oReq.addEventListener("load", receiveLCSData);
   oReq.open("GET", "https://api.lolesports.com/api/v1/scheduleItems?leagueId=2");
+  dispatch(beginLoading());
   oReq.send();
 };
 
@@ -54,6 +58,7 @@ export const fetchMatchDetails = (tournamentId, matchId) => dispatch => {
       type: RECEIVE_MATCH_DETAILS,
       details
     });
+    dispatch(finishLoading());
   }
 
   const oReq = new XMLHttpRequest();
@@ -62,5 +67,6 @@ export const fetchMatchDetails = (tournamentId, matchId) => dispatch => {
     "GET", 
     `https://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=${tournamentId}&matchId=${matchId}`
     );
+  dispatch(beginLoading());
   oReq.send();
 }
