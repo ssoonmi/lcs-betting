@@ -3,7 +3,29 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Dashboard extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = this.props;
+    }
+
     render() {
+      let standings;
+      let predictions;
+      if (this.state.user) {
+        standings = (
+          <div className="standings">
+            <span>Current Standings</span>
+            <ul>
+              <li>Brian</li>
+              <li>Soon-Mi</li>
+              <li>Aaron</li>
+            </ul>
+          </div>
+        );
+        predictions = (
+          <span className="match-btn"> Make Your Predictions </span>
+        );
+      }
         return (
           <div className="dashboard">
             <div className="match-history-container">
@@ -24,19 +46,12 @@ class Dashboard extends React.Component {
                 scrolling="no"
                 allowFullScreen={true}>
               </iframe>
-              <div className="standings">
-                <span>Current Standings</span>
-                <ul>
-                  <li>Brian</li>
-                  <li>Soon-Mi</li>
-                  <li>Aaron</li>
-                </ul>
-              </div>
+              {standings}
           </div>
             <div className="match-history-container">
               <div className="match-history">
               </div>
-              <span className="match-btn"> Make Your Predictions </span>
+              {predictions}
             </div>
         </div>
 
@@ -46,7 +61,7 @@ class Dashboard extends React.Component {
 
 const msp = state => {
     return {
-
+      user:state.session.currentUser
     };
 };
 
