@@ -40,7 +40,7 @@ export const fetchLCSData = () => dispatch => {
       allTeams
     });
   }
-  
+
   const oReq = new XMLHttpRequest();
   oReq.onload = receiveLCSData; // same as: oReq.addEventListener("load", receiveLCSData);
   oReq.open("GET", "https://api.lolesports.com/api/v1/scheduleItems?leagueId=2");
@@ -59,7 +59,7 @@ export const fetchMatchDetails = (tournamentId, matchId) => dispatch => {
   const oReq = new XMLHttpRequest();
   oReq.addEventListener('load', receiveMatchDetails);
   oReq.open(
-    "GET", 
+    "GET",
     `https://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=${tournamentId}&matchId=${matchId}`
     );
   oReq.send();
