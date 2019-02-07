@@ -10,7 +10,14 @@ body {
   font-size: inherit;
   font-family: inherit;
   font-weight: normal;
-  color: inherit; }
+  color: inherit;
+  -webkit-touch-callout: none;
+   -webkit-user-select: none;
+    -khtml-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+           user-select: none; 
+}
 
 a {
   color: #c9aa71;
@@ -235,6 +242,12 @@ nav {
   font-weight: 600;
   box-sizing: border-box;
   border: 3px solid #010A1D;
+  -webkit-touch-callout: none;
+   -webkit-user-select: none;
+    -khtml-user-select: none;
+      -moz-user-select: none;
+       -ms-user-select: none;
+           user-select: none;
 }
 
 .match-history {
