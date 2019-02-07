@@ -11,7 +11,7 @@ body
   font-family: Helvetica, Arial, sans-serif
   color: $font-color
 
-* 
+*
   margin: 0
   padding: 0
   box-sizing: border-box
@@ -21,7 +21,7 @@ body
   color: inherit
 
 
-a 
+a
   color: $link-color
   text-decoration: none
   display: block
@@ -30,15 +30,15 @@ a
   font-weight: bold
   color: $active-link-color
 
-ul 
+ul
   list-style: none
 
 
-main 
+main
   margin-top: 36px
 
 
-nav 
+nav
   display: flex
   background-color: $link-background-color
   position: fixed
@@ -46,14 +46,20 @@ nav
   top: 0
   right: 0
   left: 0
-  justify-content: space-around
+  justify-content: space-between
   align-items: center
+  font-family: 'Montserrat', sans-serif
 
-  h1 
+  h1
     display: block
-  
-  ul 
+    margin: 0 12vw
+    font-family: 'carter one'
+    font-size: 20px
+
+  ul
     display: flex
+    margin: 0 6vw
+    font-size: 12px
 
     li
       margin-right: 30px
@@ -123,6 +129,93 @@ $match-index-list-color: black
 
       > div
         display: flex
-  
+
   h3
     margin-bottom: 10px
+
+// styling for session form
+
+.session-screen
+  background: #010A1D
+  height: -webkit-fill-available
+
+.session-form-container
+  border-color: #463714
+  background: #010a13
+  box-shadow: 0 0 0 1px rgba(1,10,19,0.48)
+  display: flex
+  flex-direction: column
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  border: 2px solid transparent
+  border-image: linear-gradient(to top, #614a1f 0, #463714 5px, #463714 100%) 1 stretch
+  padding: 2em
+  width: 400px
+
+  h2
+    font-family: 'Carter One', cursive
+    font-size: 28px
+    text-transform: uppercase
+
+  a
+    color: #cdbe91
+    font-size: 12px
+    text-align: right
+
+.session-form
+  width: 100%
+  text-align: center
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  label
+    font-size: 12px
+    margin-top: .5em
+    text-align: left
+    width: 100%
+    color: #a09b8c
+
+  input
+    width: 100%
+    box-sizing: border-box
+    border-radius: 0
+    border-style: solid
+    background-color: #1e2328
+    transition: border-color 0s
+    outline: none
+    padding: .5em .75em
+
+    &:focus
+      border-color: #a98f5d
+      background: linear-gradient(to bottom, #1e2328, #292d30)
+      border-image: linear-gradient(to bottom, #785A28, #c8aa6e) 1 stretch
+
+.session-form-info
+  color: #f0e6d2
+  border-color: #785a28
+  border-width: 1px
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) inset, 0 0 0 1px rgba(0, 0, 0, 0.25)
+  font-size: 14px
+  margin-top: .5em
+
+.session-form-submit
+  font-family: 'Carter One', cursive
+  border-width: 2px
+  margin: 2em 1em 1em 1em
+  text-transform: uppercase
+  font-size: 16px
+  border: 2px solid transparent
+  border-image: linear-gradient(to top, #0d404c 0%, #0596aa 44%, #0596aa 93%, #0ac8b9 100%)
+  border-image-slice: 1
+  color: #cdfafa
+  box-shadow: 0 0 1px 1px #010a13, inset 0 0 1px 1px #010a13
+
+  &:disabled
+    color: #5c5b57
+    background-color: #1e2328
+    border-color: #5c5b57
+    border-width: 2px
+    border-image: initial
