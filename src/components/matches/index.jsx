@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter, Link } from 'react-router-dom';
+import ToggleButton from '../bets/toggle_button';
 // import { fetchMatches } from '../../actions/match_actions';
 
 class MatchIndex extends React.Component {
@@ -31,6 +32,7 @@ class MatchIndex extends React.Component {
                           vs.
                         <Link to={`/teams/${team2}`} >{team2}</Link>
                       </div>
+                      <ToggleButton match={match} />
                     </li>
                   );
                 })}
