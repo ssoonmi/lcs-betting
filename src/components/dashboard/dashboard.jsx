@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Dashboard extends React.Component {
     constructor(props) {
       super(props);
-      this.state = this.props;
     }
 
     render() {
@@ -16,13 +15,14 @@ class Dashboard extends React.Component {
       let showRecent;
       let showUpcoming;
       if (this.props.matches) {
-        this.props.matches.forEach(match => {
-          if (match.state === "resolved") {
+        for (let i = 0; i < this.props.matches.length; i++) {
+          let match = this.props.matches[i];
+          if (match.resolved === "resolved") {
             recentMatches.push(match);
           } else {
             upcomingMatches.push(match);
           }
-        });
+        }
         showRecent = recentMatches.reverse().slice(0,3).map(match => (
           <li>
             <div> {match.name} </div>
@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
           </li>
         ));
       }
-      if (this.state.user) {
+      if (this.props.user) {
         standings = (
           <div className="standings">
             <span>Current Standings</span>
@@ -93,10 +93,29 @@ class Dashboard extends React.Component {
 }
 
 const msp = state => {
-    let matches;
-    if (state.matches == true) {
-      matches = Object.values(state.matches.timestamps);
+    let matches = [];
+    let timestamps;
+    if (state.matches.timestamps) {
+      timestamps = Object.keys(state.matches.timestamps);
+      for (let i = 0; i < timestamps.length; i++) {
+        let match = timestamps[i];
+        matches.push(match);
+      }
+
+      matches = matches.sort(function(a,b) {
+        let match1 = new Date(a.scheduledTime);
+        let match2 = new Date(b.scheduledTime);
+        if (match1 > match2) {
+          return 1;
+        } else if (match1 < match2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      matches = matches.map(match => state.matches.timestamps[match]);
     }
+
     return {
       user:state.session.currentUser,
       matches: matches,

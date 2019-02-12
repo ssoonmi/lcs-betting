@@ -33,7 +33,7 @@ export default function (state = {}, action) {
             newState.weeks[tags.blockLabel].days[tags.subBlockLabel] = newState.weeks[tags.blockLabel].days[tags.subBlockLabel] || { matches: {} };
             newState.weeks[tags.blockLabel].days[tags.subBlockLabel].matches[time] = match;
             newState.timestamps = newState.timestamps || {};
-            newState.timestamps[match.scheduledTime] = { week: tags.blockLabel, day: tags.subBlockLabel, resolved: match.state, won:match.winningTeamId, name:match.name }
+            newState.timestamps[match.scheduledTime] = { week: tags.blockLabel, day: tags.subBlockLabel, resolved: match.state, won:match.winningTeamId, name:match.name, scheduledTime:match.scheduledTime }
             found = true;
           }
           i++;
