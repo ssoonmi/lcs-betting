@@ -16,7 +16,7 @@ body {
     -khtml-user-select: none;
       -moz-user-select: none;
        -ms-user-select: none;
-           user-select: none; 
+           user-select: none;
 }
 
 a {
@@ -257,6 +257,15 @@ nav {
   background-color: #494f58;
   border:1px solid #c9aa71;
   border-radius:5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c8aa71;
+}
+
+.match-history span {
+  padding: 3vh;
+  font-weight: 800;
 }
 
 .standings {
@@ -277,7 +286,10 @@ nav {
   align-self: center;
 }
 
-
+.line-brk {
+  width:100%;
+  border-color: #c9aa71;
+}
 
 .standings ul li{
   margin-bottom:3vh;

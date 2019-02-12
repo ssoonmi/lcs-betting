@@ -11,6 +11,29 @@ class Dashboard extends React.Component {
     render() {
       let standings;
       let predictions;
+      let recentMatches = [];
+      let upcomingMatches = [];
+      let showRecent;
+      let showUpcoming;
+      if (this.props.matches) {
+        this.props.matches.forEach(match => {
+          if (match.state === "resolved") {
+            recentMatches.push(match);
+          } else {
+            upcomingMatches.push(match);
+          }
+        });
+        showRecent = recentMatches.reverse().slice(0,3).map(match => (
+          <li>
+            <div> {match.name} </div>
+          </li>
+        ));
+        showUpcoming = upcomingMatches.slice(0,3).map(match => (
+          <li>
+            <div> {match.name} </div>
+          </li>
+        ));
+      }
       if (this.state.user) {
         standings = (
           <div className="standings">
@@ -30,6 +53,11 @@ class Dashboard extends React.Component {
           <div className="dashboard">
             <div className="match-history-container">
               <div className="match-history">
+                <span> Recent Matches </span>
+                <hr className="line-brk"/>
+                <ul>
+                  {showRecent}
+                </ul>
               </div>
               <span className="match-btn"> Previous Bets </span>
             </div>
@@ -50,6 +78,11 @@ class Dashboard extends React.Component {
           </div>
             <div className="match-history-container">
               <div className="match-history">
+                <span> Upcoming Matches </span>
+                  <hr className="line-brk"/>
+                  <ul>
+                    {showUpcoming}
+                  </ul>
               </div>
               {predictions}
             </div>
@@ -60,8 +93,13 @@ class Dashboard extends React.Component {
 }
 
 const msp = state => {
+    let matches;
+    if (state.matches == true) {
+      matches = Object.values(state.matches.timestamps);
+    }
     return {
-      user:state.session.currentUser
+      user:state.session.currentUser,
+      matches: matches,
     };
 };
 
