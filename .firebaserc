@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "lcs-betting"
+    "staging": "lcs-betting",
+    "default": "lcs-betting"
   }
 }

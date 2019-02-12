@@ -29,6 +29,7 @@ export const receiveCurrentUser = (user) => {
 };
 
 export const logoutCurrentUser = (username) => {
+    setCookie('currentUser', "", 0);
     return {
         type: REMOVE_CURRENT_USER,
         username
@@ -42,6 +43,13 @@ export const receiveSessionErrors = (errors) => {
   };
 };
 
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 export const login = (user) => dispatch => {
     const userRef = firebase.database().ref("users/");
     userRef.once('value', (snapshot) => {
@@ -51,6 +59,7 @@ export const login = (user) => dispatch => {
       if (users[user.username]) {
         if (passwords[user.username] == user.password) {
           dispatch(receiveCurrentUser({ username: user.username }));
+          setCookie('currentUser', user.username, 7);
         } else {
           dispatch(receiveSessionErrors(['Invalid Password']));
         }
@@ -74,6 +83,7 @@ export const signup = (user) => dispatch => {
       const userRef = firebase.database().ref(`users/users/${user.username}/username`);
       userRef.set(user.username);
       dispatch(receiveCurrentUser({ username: user.username }));
+      setCookie('currentUser', user.username, 7);
     }
   }, (error) => {
     console.log("Error: " + error.code);

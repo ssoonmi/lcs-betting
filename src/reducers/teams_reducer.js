@@ -23,7 +23,7 @@ export default function(state = {}, action) {
       });
       return newState;
     case RECEIVE_TEAMS:
-      return action.teams;
+      return merge({}, state, action.teams);
     default:
       return state;
   }

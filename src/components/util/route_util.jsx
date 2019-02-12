@@ -10,21 +10,31 @@ const msp = state => {
 };
 
 export const AuthRoute = withRouter(connect(msp, null)(
-  function ({currentUser, path, component}) {
-    if (currentUser) {
-      return (<Redirect to="/" />);
+  function (props) {
+    const {currentUser, path, component, location} = props;
+    if (location.pathname == path) {
+      if (currentUser) {
+        return (<Redirect to="/" />);
+      } else {
+        return (<Route path={path} component={component} />);
+      }
     } else {
-      return (<Route path={path} component={component} />);
+      return (null);
     }
   }
 ));
 
 export const ProtectedRoute = withRouter(connect(msp, null)(
-  function ({ currentUser, path, component }) {
-    if (currentUser) {
-      return (<Route path={path} component={component} />);
+  function (props) {
+    const { currentUser, path, component, location } = props;
+    if (location.pathname == path) {
+      if (currentUser) {
+        return (<Route path={path} component={component} />);
+      } else {
+        return (<Redirect to="/" />);
+      }
     } else {
-      return (<Redirect to="/login" />);
+      return (null);
     }
   }
 ));

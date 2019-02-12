@@ -5,8 +5,12 @@ import { connect } from 'react-redux';
 import TeamShow from './show';
 
 class TeamIndex extends React.Component {
+  componentDidMount() {
+    this.props.fetchTeams();
+  }
 
   render() {
+    
     const { teams, teamName } = this.props;
     let teamId;
     const teamLis = teams.map((team, idx) => {
@@ -35,13 +39,14 @@ const msp = (state, ownProps) => {
   return {
     teamName: ownProps.match.params.teamName,
     teams: Object.values(state.teams),
+    teamLoading: state.ui.teamLoading,
   };
 };
 
-// const mdp = dispatch => {
-//   return {
-//     fetchTeams: () => dispatch(fetchTeams())
-//   };
-// }
+const mdp = dispatch => {
+  return {
+    fetchTeams: () => dispatch(fetchTeams())
+  };
+}
 
-export default withRouter(connect(msp, null)(TeamIndex));
+export default withRouter(connect(msp, mdp)(TeamIndex));

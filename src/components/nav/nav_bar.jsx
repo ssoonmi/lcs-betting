@@ -13,7 +13,11 @@ class NavBar extends React.Component {
     let logState;
     if (loggedIn) {
       logState = (
-        <span className="logout" onClick={() => logout(username)}>Log Out</span>
+        <span 
+        style={{ cursor: "pointer" }}
+        className="logout" onClick={() => logout(username)}>
+          Log Out
+        </span>
       );
     } else {
       logState = (

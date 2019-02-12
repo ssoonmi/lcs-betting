@@ -23,7 +23,9 @@ class App extends React.Component {
   render() {
     if (this.props.loading) {
       return (
-        <img className="loading-gif" src="https://unixtitan.net/images/loading-vector-gif-4.gif"/>
+        <div className="loading-gif" >
+          <img src="https://unixtitan.net/images/loading-vector-gif-4.gif"/>
+        </div>
       )
     } else {
       return (
