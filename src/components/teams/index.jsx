@@ -6,7 +6,9 @@ import TeamShow from './show';
 
 class TeamIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchTeams();
+    if (!this.props.fetchedTeams) {
+      this.props.fetchTeams();
+    }
   }
 
   render() {
@@ -39,7 +41,7 @@ const msp = (state, ownProps) => {
   return {
     teamName: ownProps.match.params.teamName,
     teams: Object.values(state.teams),
-    teamLoading: state.ui.teamLoading,
+    fetchedTeams: state.ui.fetchedTeams,
   };
 };
 

@@ -7,10 +7,13 @@ class SideNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentWeek: null
+      currentWeek: props.startingWeek
     };
     this.unmounting = false;
     this.scrollEventListeners = [];
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.sideNavRef = React.createRef();
   }
 
   componentDidMount() {
@@ -58,16 +61,43 @@ class SideNav extends React.Component {
     }
   }
 
-  // handleScroll() {
-  //   if (!this.unmounting) {
-  //     Object.keys(this.props.weekRefs).forEach((week) => {
-  //       const weekRef = this.props.weekRefs[week];
-  //       if (weekRef.offsetTop > window.scrollY - 900 && weekRef.offsetTop < window.scrollY + 200) {
-  //         this.setState({ currentWeek: week });
-  //       }
-  //     });
-  //   }
-  // }
+  handleClick(e) {
+    e.preventDefault();
+    const currentWeek = this.state.currentWeek;
+    const posY = e.clientY - this.sideNavRef.current.offsetHeight + 200;
+    if ((currentWeek > 0 && posY < ((currentWeek - 1) * 44)) || (currentWeek < 10 && posY > (currentWeek * 44))) {
+      let nextCurrentWeek = Math.floor(posY / 44) + 1;
+      nextCurrentWeek = nextCurrentWeek > 9 ? 9 : nextCurrentWeek;
+      nextCurrentWeek = nextCurrentWeek < 1 ? 1 : nextCurrentWeek;
+      this.setState({ currentWeek: nextCurrentWeek });
+      window.scrollTo(0, this.props.weekRefs[nextCurrentWeek].offsetTop - NAV_BAR_HEIGHT - MATCH_LIST_PADDING);
+    }
+  }
+
+  handleDrag(e) {
+    const that = this;
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    document.onmousemove = (e) => {
+      e.preventDefault();
+      const currentWeek = that.state.currentWeek;
+      const posY = e.clientY - that.sideNavRef.current.offsetHeight + 200;
+      if (currentWeek > 1 && posY < ((currentWeek - 1) * 42)) {
+        const nextCurrentWeek = parseInt(currentWeek) - 1;
+        that.setState({ currentWeek: nextCurrentWeek });
+        window.scrollTo(0, that.props.weekRefs[nextCurrentWeek].offsetTop - NAV_BAR_HEIGHT - MATCH_LIST_PADDING);
+      } else if (currentWeek < 9 && posY > (currentWeek * 42)) {
+        const nextCurrentWeek = parseInt(currentWeek) + 1;
+        that.setState({ currentWeek: nextCurrentWeek });
+        window.scrollTo(0, that.props.weekRefs[nextCurrentWeek].offsetTop - NAV_BAR_HEIGHT - MATCH_LIST_PADDING);
+      }
+    };
+    document.onmouseup = (e) => {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
+  }
 
   render() {
     const { weekRefs } = this.props;
@@ -87,10 +117,15 @@ class SideNav extends React.Component {
     const ballDiff = this.state.currentWeek > 4 ? 1 : 0;
     return (
       <div className="match-index-side-nav">
-        <ul>
+        <ul ref={this.sideNavRef}>
           {sideBarLis}
-          <div className="side-nav-line"></div>
-          <div style={{ top: `calc(${((this.state.currentWeek - 1) * 11)}% + 14px + ${ballDiff}px)`}} className="side-nav-ball"></div>
+          <div 
+          className="side-nav-line"
+          onClick={this.handleClick}></div>
+          <div 
+          draggable="true"
+          onDragStart={this.handleDrag}
+          style={{ top: `calc(${((this.state.currentWeek - 1) * 11)}% + 14px + ${ballDiff}px)`}} className="side-nav-ball"></div>
         </ul>
       </div>
     )

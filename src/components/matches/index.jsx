@@ -108,7 +108,7 @@ class MatchIndex extends React.Component {
     }
     return (
       <article className="match-index">
-        {Object.keys(this.weekRefs).length != 0 ? <SideNav weekRefs={this.weekRefs}/> : null}
+        {Object.keys(this.weekRefs).length != 0 ? <SideNav weekRefs={this.weekRefs} startingWeek={scrollPositionSet.week}/> : null}
         <section className="match-index-list">
           <ul>
             {matchLis}

@@ -1,5 +1,5 @@
 import firebase from '../firebase';
-import { beginLoadingTeams, finishLoadingTeams } from './ui_actions';
+import { startFetchingTeams } from './ui_actions';
 
 export const RECEIVE_TEAMS = 'RECEIVE_TEAMS';
 export const RECEIVE_TEAM = 'RECEIVE_TEAM';
@@ -12,6 +12,7 @@ export const receiveTeams = (teams) => {
 };
 
 export const fetchTeams = () => (dispatch, getState) => {
+  dispatch(startFetchingTeams());
   const state = getState();
   const teams = state.teams;
   const tournamentId = state.matches.tournamentId;
@@ -26,7 +27,6 @@ export const fetchTeams = () => (dispatch, getState) => {
       numReqs += 1;
       if (teamsArr.length == numReqs) {
         dispatch(receiveTeams(teamData));
-        dispatch(finishLoadingTeams());
       }
     }
   }

@@ -24,9 +24,7 @@ function getCookie(cname) {
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   const currentUser = getCookie("currentUser");
-  let preloadedState = {
-    ui: { loading: true }
-  };
+  let preloadedState = {};
   if (currentUser) {
     preloadedState.session = {currentUser};
   }
