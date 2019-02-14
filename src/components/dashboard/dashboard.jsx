@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
               <div className="match-history">
                 <span> Recent Matches </span>
                 <hr className="line-brk"/>
-                <ul>
+                <ul className="match-link">
                   {showRecent}
                 </ul>
               </div>
@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
               <div className="match-history">
                 <span> Upcoming Matches </span>
                   <hr className="line-brk"/>
-                  <ul>
+                  <ul className="match-link">
                     {showUpcoming}
                   </ul>
               </div>
@@ -103,15 +103,9 @@ const msp = state => {
       }
 
       matches = matches.sort(function(a,b) {
-        let match1 = new Date(a.scheduledTime);
-        let match2 = new Date(b.scheduledTime);
-        if (match1 > match2) {
-          return 1;
-        } else if (match1 < match2) {
-          return -1;
-        } else {
-          return 0;
-        }
+        let match1 = new Date(a);
+        let match2 = new Date(b);
+        return match1 > match2 ? 1 : match1 < match2 ?  -1 : 0;
       });
       matches = matches.map(match => state.matches.timestamps[match]);
     }
