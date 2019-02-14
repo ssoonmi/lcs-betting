@@ -487,8 +487,18 @@ nav {
   text-align: center;
 }
 
+
+
 .match-link li div {
   font-weight:700;
+}
+
+.match-link li div a {
+  display:inline;
+}
+
+.match-link li div a:hover {
+  font-weight: 700;
 }
 
 .match-link {

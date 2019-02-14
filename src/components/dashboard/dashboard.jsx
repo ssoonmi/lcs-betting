@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
       let upcomingMatches = [];
       let showRecent;
       let showUpcoming;
+      let currentUser = this.props.user;
       if (this.props.matches) {
         for (let i = 0; i < this.props.matches.length; i++) {
           let match = this.props.matches[i];
@@ -23,16 +24,24 @@ class Dashboard extends React.Component {
             upcomingMatches.push(match);
           }
         }
-        showRecent = recentMatches.reverse().slice(0,3).map(match => (
-          <li>
-            <div> {match.name} </div>
+        showRecent = recentMatches.reverse().slice(0,3).map(match => {
+          let team1Name = this.props.teams[match.team1].acronym;
+          let team2Name = this.props.teams[match.team2].acronym;
+          return (
+          <li key={match.name}>
+            <div> <Link to={`/teams/${team1Name}`}> {team1Name}</Link> vs <Link to={`/teams/${team2Name}`}> {team2Name}</Link> </div>
           </li>
-        ));
-        showUpcoming = upcomingMatches.slice(0,3).map(match => (
-          <li>
-            <div> {match.name} </div>
+          );
+        });
+        showUpcoming = upcomingMatches.slice(0,3).map(match => {
+          let team1Name = this.props.teams[match.team1].acronym;
+          let team2Name = this.props.teams[match.team2].acronym;
+          return (
+          <li key={match.name}>
+            <div> <Link to={`/teams/${team1Name}`}> {team1Name}</Link> vs <Link to={`/teams/${team2Name}`}> {team2Name}</Link> </div>
           </li>
-        ));
+          );
+        });
       }
       if (this.props.user) {
         standings = (
@@ -46,7 +55,7 @@ class Dashboard extends React.Component {
           </div>
         );
         predictions = (
-          <span className="match-btn"> Make Your Predictions </span>
+          <Link to="/matches" className="match-btn"> Make Your Predictions </Link>
         );
       }
         return (
@@ -113,6 +122,7 @@ const msp = state => {
     return {
       user:state.session.currentUser,
       matches: matches,
+      teams: state.teams,
     };
 };
 
