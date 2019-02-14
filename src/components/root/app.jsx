@@ -9,6 +9,8 @@ import MatchShow from '../matches/show';
 import Login from '../session/login';
 import SignUp from '../session/signup';
 
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
 import { fetchLCSData } from '../../actions/match_actions';
 import { fetchUsers } from '../../actions/user_actions';
 
@@ -19,22 +21,36 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <>
-      <NavBar/>
-        <main>
-          <Route path="/teams/:teamName?" component={TeamIndex} />
-          <Switch>
-            <Route path="/matches/week/:week/day/:day" component={MatchShow} />
-            <Route path="/matches/" component={MatchIndex} />
-          </Switch>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={SignUp}/>
-          <Route exact path="/" component={Dashboard}/>
-        </main>
-      </>
-    );
+    if (this.props.loading) {
+      return (
+        <div className="loading-gif" >
+          <img src="https://unixtitan.net/images/loading-vector-gif-4.gif"/>
+        </div>
+      )
+    } else {
+      return (
+        <>
+          <NavBar />
+          <main>
+            <Route path="/teams/:teamName?" component={TeamIndex} />
+            <Switch>
+              <Route path="/matches/week/:week/day/:day" component={MatchShow} />
+              <Route path="/matches/" component={MatchIndex} />
+            </Switch>
+            <AuthRoute path="/login" component={Login} />
+            <AuthRoute path="/signup" component={SignUp} />
+            <Route exact path="/" component={Dashboard} />
+          </main>
+        </>
+      );
+    }
   }
+}
+
+const msp = state => {
+  return {
+    loading: state.ui.loading
+  };
 }
 
 const mdp = dispatch => {
@@ -44,4 +60,4 @@ const mdp = dispatch => {
   }
 };
 
-export default withRouter(connect(null, mdp)(App));
+export default withRouter(connect(msp, mdp)(App));
