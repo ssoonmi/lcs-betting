@@ -25,13 +25,13 @@ export const fetchMatches = () => dispatch => {
 export const fetchLCSData = () => (dispatch, getState) => {
   function receiveLCSData() {
     const data = JSON.parse(this.responseText);
-    const lcs = data.highlanderTournaments[6];
+    const lcs = Object.values(data.highlanderTournaments).filter((tournament) => tournament.title == 'lcs_2019_spring')[0];
     const gameIds = lcs.gameIds; //array
-    const matches = Object.values(Object.values(lcs.brackets)[0].matches); //array
+    const bracket = Object.values(lcs.brackets).filter((bracket) => bracket.groupName == 'regular_season')[0];
+    const matches = Object.values(bracket.matches); //array
     const allMatches = data.scheduleItems;
     const teams = Object.values(lcs.rosters); //array
     const allTeams = data.teams; // array
-
     dispatch({
       type: RECEIVE_LCS_DATA,
       data,
@@ -45,7 +45,6 @@ export const fetchLCSData = () => (dispatch, getState) => {
     dispatch(fetchStakes());
     dispatch(finishLoading());
   }
-
   const oReq = new XMLHttpRequest();
   oReq.onload = receiveLCSData; // same as: oReq.addEventListener("load", receiveLCSData);
   oReq.open("GET", "https://api.lolesports.com/api/v1/scheduleItems?leagueId=2");

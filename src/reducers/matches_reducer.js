@@ -18,6 +18,9 @@ export default function (state = {}, action) {
             match.team1Id = match.input[0].roster;
             match.team2Id = match.input[1].roster;
             match.scheduledTime = action.allMatches[i].scheduledTime;
+            if (Date.parse(match.scheduledTime) > Date.now()) {
+              match.state = 'unresolved';
+            }
             match.tags = action.allMatches[i].tags;
             match.tournament = action.allMatches[i].tournament;
             newState.tournamentId = action.allMatches[i].tournament;

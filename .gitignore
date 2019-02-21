@@ -22,3 +22,5 @@
 
 .DS_Store
 .firebase/
+
+libreadline.7.0.dylib
