@@ -8,6 +8,8 @@ import MatchIndex from '../matches/index';
 import MatchShow from '../matches/show';
 import Login from '../session/login';
 import SignUp from '../session/signup';
+import betIndex from '../bets/index';
+
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -33,6 +35,7 @@ class App extends React.Component {
           <NavBar />
           <main>
             <Route path="/teams/:teamName?" component={TeamIndex} />
+            <Route path="/bets" component={betIndex} />
             <Switch>
               <Route path="/matches/week/:week/day/:day" component={MatchShow} />
               <Route path="/matches/" component={MatchIndex} />
