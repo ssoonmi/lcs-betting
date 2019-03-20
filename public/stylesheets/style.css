@@ -147,6 +147,40 @@ nav {
     text-align: center;
     color: #c9aa71; }
 
+.team-show-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.team-logo {
+  width: 15vw;
+  height: 100%;
+  margin-right: 2vw; }
+
+.player-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0; }
+  .player-list-item h1 {
+    color: #5d9ca3;
+    font-size: 2em;
+    letter-spacing: 2px; }
+  .player-list-item h3 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #8b9199;
+    margin-bottom: 10px; }
+  .player-list-item img {
+    width: 350px;
+    margin-bottom: 2em; }
+
+.player-role {
+  text-transform: uppercase;
+  letter-spacing: 0.2em; }
+
 .match-index-list {
   width: 100%;
   padding-top: 5px;
@@ -291,8 +325,7 @@ nav {
   background-color: white;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -150px;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,7 +333,9 @@ nav {
   .loading-gif img {
     display: block;
     height: 376px;
-    width: auto; }
+    width: auto;
+    position: absolute;
+    bottom: -20px; }
 
 .team-loading-gif {
   width: 100px;

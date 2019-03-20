@@ -186,6 +186,45 @@ $team-show-side-margin: 20px
     // color: $team-show-color
     color: #c9aa71
 
+.team-show-header
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+
+.team-logo
+  width: 15vw
+  height: 100%
+  margin-right: 2vw
+
+.player-list-item
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 50px 0
+
+  h1
+    color: #5d9ca3
+    font-size: 2em
+    letter-spacing: 2px
+
+  h3
+    font-size: 20px
+    font-weight: 600
+    letter-spacing: .1em
+    color: #8b9199
+    margin-bottom: 10px
+
+  img
+    width: 350px
+    margin-bottom: 2em
+
+
+.player-role
+  text-transform: uppercase
+  letter-spacing: .2em
+
+
 $match-index-list-color: black
 
 .match-index-list
@@ -356,8 +395,7 @@ $match-index-list-color: black
   background-color: white
   top: 50%
   left: 50%
-  margin-top: -150px
-  margin-left: -150px
+  transform: translate(-50%, -50%)
   display: flex
   justify-content: center
   align-items: center
@@ -367,6 +405,8 @@ $match-index-list-color: black
     display: block
     height: 376px
     width: auto
+    position: absolute
+    bottom: -20px
     
 
 .team-loading-gif
