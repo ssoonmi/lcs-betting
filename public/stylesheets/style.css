@@ -54,11 +54,6 @@ nav {
     nav ul li {
       margin-right: 30px; }
 
-.team-index {
-  display: flex;
-  height: -webkit-fill-available;
-  background-color: #15171a; }
-
 .match-index {
   display: flex;
   background-color: #15171a;
@@ -111,17 +106,19 @@ nav {
 .team-index-list {
   width: 30%;
   overflow: scroll; }
-  .team-index-list li {
-    background-color: #0e1012; }
+  .team-index-list li:hover {
+    background-size: 90%; }
   .team-index-list a {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
     padding: 30px;
     font-size: 18px;
     border-bottom: 1px solid #292d31;
-    font-family: "Montserrat"; }
+    font-family: "Montserrat";
+    color: white;
+    position: relative; }
   .team-index-list::-webkit-scrollbar {
     height: 14px;
     width: 14px;
@@ -133,6 +130,18 @@ nav {
     background: #292d31;
     -webkit-border-radius: 1ex;
     border: 3px solid #0e1012; }
+
+.team-index {
+  display: flex;
+  height: -webkit-fill-available;
+  background-color: #15171a; }
+
+.team-gradient {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(#000, #4d6e7d);
+  position: absolute;
+  opacity: 0.3; }
 
 .team-show {
   width: 70%;

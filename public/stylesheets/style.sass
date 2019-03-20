@@ -66,11 +66,6 @@ nav
     li
       margin-right: 30px
 
-.team-index
-  display: flex
-  height: -webkit-fill-available
-  background-color: #15171a
-
 .match-index
   display: flex
   background-color: #15171a
@@ -138,17 +133,21 @@ $team-show-side-margin: 20px
 
   li
     // margin-bottom: 5px
-    background-color: #0e1012
+    // background-color: #0e1012
+    &:hover
+      background-size: 90%
 
   a
     display: flex
     align-items: center
-    justify-content: center
+    justify-content: flex-end
     width: 100%
     padding: 30px
     font-size: 18px
     border-bottom: 1px solid #292d31
     font-family: 'Montserrat'
+    color: white
+    position: relative
 
   &::-webkit-scrollbar
     height: 14px
@@ -165,6 +164,24 @@ $team-show-side-margin: 20px
     border: 3px solid #0e1012
 
     // border-radius: 8px
+
+.team-index
+  display: flex
+  height: -webkit-fill-available
+  background-color: #15171a
+
+// .team-list-item
+//   background-position-x: 0%
+//   background-position-y: center
+//   background-repeat: no-repeat
+//   background-size: 70%
+
+.team-gradient
+  width: 100%
+  height: 100%
+  background-image: linear-gradient(#000, #4d6e7d)
+  position: absolute
+  opacity: .3
 
 .team-show
   // margin: 0 $team-show-side-margin
