@@ -11,15 +11,29 @@ class TeamShow extends React.Component {
                      toplane: "Top Lane", 
                      jungle: "Jungle",
                      support: "Support",
-                     adcarry: "Bot Lane"}
+                     adcarry: "Bot Lane"};
+      const socialMedia = {twitter: "Twitter",
+                           facebook: "Facebook",
+                           twitch: "Twitch",
+                           youtube: "YouTube",
+                           instagram: "Instagram"};
 
       const players = team.players.map((player, idx) => {
+        const { socialNetworks } = player;
         const socials = [];
+
         for (const platform in socialNetworks) {
-          socials.push(<li>
-            <a href={socialNetworks.platform}>{platform[0].toUppercase + platform.slice(1)}</a>
+          let url;
+          if (socialNetworks[platform].slice(0,8) !== "https://") {
+            url = "https://" + socialNetworks[platform];
+          } else {
+            url = socialNetworks[platform];
+          }
+
+          socials.push(<li key={player.id + idx}>
+            <a href={url}>{socialMedia[platform]}</a>
           </li>)
-        };
+        }
 
         return <li key={idx} className="player-list-item">
           <h1>{player.name}</h1>

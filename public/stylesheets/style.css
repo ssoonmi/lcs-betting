@@ -136,7 +136,8 @@ nav {
 
 .team-show {
   width: 70%;
-  background: #15171a; }
+  background: #15171a;
+  overflow: scroll; }
   .team-show > div {
     padding: 20px;
     height: 100%;
