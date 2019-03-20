@@ -16,7 +16,8 @@ class TeamShow extends React.Component {
                            facebook: "Facebook",
                            twitch: "Twitch",
                            youtube: "YouTube",
-                           instagram: "Instagram"};
+                           instagram: "Instagram",
+                           azubu: "Azubu"};
 
       const players = team.players.map((player, idx) => {
         const { socialNetworks } = player;
