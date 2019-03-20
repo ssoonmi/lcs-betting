@@ -21,6 +21,7 @@ class TeamShow extends React.Component {
       const players = team.players.map((player, idx) => {
         const { socialNetworks } = player;
         const socials = [];
+        let i = 0;
 
         for (const platform in socialNetworks) {
           let url;
@@ -30,10 +31,17 @@ class TeamShow extends React.Component {
             url = socialNetworks[platform];
           }
 
-          socials.push(<li key={player.id + idx}>
+          socials.push(<li key={player.id + i}>
             <a href={url}>{socialMedia[platform]}</a>
           </li>)
+
+          socials.push(
+            <li key={player.id + player.name.length + i}> | </li>
+          )
+          i+=1;
         }
+
+        socials.pop();
 
         return <li key={idx} className="player-list-item">
           <h1>{player.name}</h1>

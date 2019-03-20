@@ -177,6 +177,11 @@ nav {
   .player-list-item img {
     width: 350px;
     margin-bottom: 2em; }
+  .player-list-item ul {
+    display: flex; }
+    .player-list-item ul li {
+      padding: 0 5px;
+      font-size: 18px; }
 
 .player-role {
   text-transform: uppercase;
