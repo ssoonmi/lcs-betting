@@ -106,8 +106,11 @@ nav {
 .team-index-list {
   width: 30%;
   overflow: scroll; }
-  .team-index-list li:hover {
-    background-size: 90%; }
+  .team-index-list li {
+    position: relative;
+    overflow: hidden; }
+    .team-index-list li:hover {
+      background: none; }
   .team-index-list a {
     display: flex;
     align-items: center;
@@ -118,7 +121,10 @@ nav {
     border-bottom: 1px solid #292d31;
     font-family: "Montserrat";
     color: white;
-    position: relative; }
+    position: relative;
+    z-index: 11; }
+    .team-index-list a:focus {
+      font-weight: 600; }
   .team-index-list::-webkit-scrollbar {
     height: 14px;
     width: 14px;
@@ -141,7 +147,11 @@ nav {
   height: 100%;
   background-image: linear-gradient(#000, #4d6e7d);
   position: absolute;
-  opacity: 0.3; }
+  opacity: 0.3;
+  z-index: 10;
+  transition: opacity 0.3s; }
+  .team-gradient:hover {
+    opacity: 0; }
 
 .team-show {
   width: 70%;
@@ -167,6 +177,13 @@ nav {
     background: #292d31;
     -webkit-border-radius: 1ex;
     border: 3px solid #0e1012; }
+
+.team-index-logo {
+  width: 75%;
+  position: absolute;
+  top: -55px;
+  left: -10px;
+  transition: width 0.2s; }
 
 .team-show-header {
   display: flex;

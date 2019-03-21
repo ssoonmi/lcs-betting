@@ -7,7 +7,9 @@ import TeamShow from './show';
 class TeamIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.zoomIn = this.zoomIn.bind(this);
+    this.teamItems = {};
+    this.zoomIn = this.zoomIn.bind(this);
+    this.zoomOut = this.zoomOut.bind(this);
   }
 
   componentDidMount() {
@@ -16,12 +18,21 @@ class TeamIndex extends React.Component {
     }
   }
 
-  // zoomIn(e) {
-  //   e.currentTarget.backgroundSize = `90%`;
-  //   // if (this.teamListItem) {
-  //   //   this.teamListItem.backgroundSize = `90%`;
-  //   // }
-  // }
+  zoomIn(e) {
+    const teamLogo = this.teamItems[e.target.id];
+    const teamGradient = this.teamItems[parseInt(e.target.id) + 10000];
+
+    teamLogo.style.width = `83%`;
+    teamGradient.style.opacity = `0`;
+  }
+
+  zoomOut(e) {
+    const teamLogo = this.teamItems[e.target.id];
+    const teamGradient = this.teamItems[parseInt(e.target.id) + 10000];
+
+    teamLogo.style.width = `75%`;
+    teamGradient.style.opacity = `0.3`;
+  }
 
   render() {
     
@@ -39,21 +50,19 @@ class TeamIndex extends React.Component {
         teamId = team.team;
       }
 
-      const background = team.logoUrl;
-      const style = { background: `url(${background})`, 
-                      backgroundPositionY: `center`, 
-                      backgroundRepeat: `no-repeat`, 
-                      backgroundSize: `70%`,
-                      position: `relative` };
-
       return (
-        <li onHover={this.zoomIn} 
-            className="team-list-item" 
-            key={idx} 
-            ref={el => (this.teamListItem = el)} 
-            style={style}>
-          <div className="team-gradient"></div>
-          <NavLink to={`/teams/${team.acronym}`}>{team.acronym}</NavLink>
+        <li
+          key={idx}
+          // ref={el => (this.teamItems[team.id] = el)}
+          onMouseEnter={this.zoomIn}
+          onMouseLeave={this.zoomOut}>
+          <div className="team-gradient" 
+               ref={el => (this.teamItems[team.id + 10000] = el)}/>
+          <img className="team-index-logo" src={team.logoUrl}
+               ref={el => (this.teamItems[team.id] = el)}/>
+          <NavLink id={team.id} to={`/teams/${team.acronym}`}>
+            {team.acronym}
+          </NavLink>
         </li>
       );
     });
