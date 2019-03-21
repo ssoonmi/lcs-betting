@@ -153,10 +153,16 @@ nav {
   .team-gradient:hover {
     opacity: 0; }
 
+@keyframes team-fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .team-show {
   width: 70%;
   background: #15171a;
-  overflow: scroll; }
+  overflow: scroll;
+  animation: team-fade-in 1s; }
   .team-show > div {
     padding: 20px;
     height: 100%;

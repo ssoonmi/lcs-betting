@@ -4,6 +4,18 @@ import { withRouter } from 'react-router-dom';
 
 
 class TeamShow extends React.Component {
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.match.params.teamName !== this.props.match.params.teamName) {
+      debugger
+      this.teamShow.style.animation = `team-fade-in 1s ease-in 0s 1`;
+    }
+  }
+
+  componentWillUnmount() {
+    console.log('unmounting');
+  }
+
   render() {
     if (!this.props.teamLoading) {
       const { team } = this.props;
@@ -24,12 +36,13 @@ class TeamShow extends React.Component {
       team.starters.forEach((player) => {
         starters[player] = player;
       })
+      let playerOrder = 0
 
       const players = team.players.map((player, idx) => {
         const { socialNetworks } = player;
         const socials = [];
         let i = 0;
-
+        
         if (starters[player.id]) {
           for (const platform in socialNetworks) {
             let url;
@@ -48,10 +61,11 @@ class TeamShow extends React.Component {
             )
             i+=1;
           }
+          playerOrder += 1;
 
           socials.pop();
 
-          return <li key={idx} className="player-list-item">
+          return <li key={idx} className="player-list-item" id={`player` + playerOrder}>
             <h1>{player.name}</h1>
             <img src={player.photoUrl}/>
             <h3>{player.firstName} {player.lastName}</h3>
@@ -62,7 +76,8 @@ class TeamShow extends React.Component {
       })
 
       return (
-        <section className="team-show">
+        <section className="team-show" 
+                 ref={el => (this.teamShow = el)}>
           <div>
             <header className="team-show-header">
               <img className="team-logo" src={team.logoUrl}/>

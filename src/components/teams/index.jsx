@@ -7,6 +7,7 @@ import TeamShow from './show';
 class TeamIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {props}
     this.teamItems = {};
     this.zoomIn = this.zoomIn.bind(this);
     this.zoomOut = this.zoomOut.bind(this);
