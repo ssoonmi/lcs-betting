@@ -5,16 +5,23 @@ import { withRouter } from 'react-router-dom';
 
 class TeamShow extends React.Component {
 
-  componentDidUpdate(oldProps) {
-    if (oldProps.match.params.teamName !== this.props.match.params.teamName) {
+  constructor(props) {
+    super(props);
+    this.state = {teamLoading: this.props.teamLoading};
+    this.fadeIn = this.fadeIn.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.teamShow) {
       debugger
-      this.teamShow.style.animation = `team-fade-in 1s ease-in 0s 1`;
+      this.teamShow.style.opacity = 1;
     }
   }
 
-  componentWillUnmount() {
-    console.log('unmounting');
+  fadeIn() {
+    this.teamShow.style.opacity = 1;
   }
+
 
   render() {
     if (!this.props.teamLoading) {
@@ -76,7 +83,7 @@ class TeamShow extends React.Component {
       })
 
       return (
-        <section className="team-show" 
+        <section className="team-show" id="team-show"
                  ref={el => (this.teamShow = el)}>
           <div>
             <header className="team-show-header">

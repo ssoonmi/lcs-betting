@@ -7,7 +7,7 @@ import TeamShow from './show';
 class TeamIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {props}
+    this.state = {teamChange: false}
     this.teamItems = {};
     this.zoomIn = this.zoomIn.bind(this);
     this.zoomOut = this.zoomOut.bind(this);
@@ -16,6 +16,14 @@ class TeamIndex extends React.Component {
   componentDidMount() {
     if (!this.props.fetchedTeams) {
       this.props.fetchTeams();
+    }
+  }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.teamName !== this.props.teamName) {
+      this.setState({teamChange: true});
+    } else if (oldProps.teamName === this.props.teamName && this.state.teamChange) {
+      this.setState({teamChange: false});
     }
   }
 
@@ -77,7 +85,7 @@ class TeamIndex extends React.Component {
             {teamLis}
           </ul>
         </section>
-        {teamId ? <TeamShow teamId={teamId}/> : null}
+        {!this.state.teamChange && teamId ? <TeamShow teamId={teamId}/> : null}
       </article>
 
     );

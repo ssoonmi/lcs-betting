@@ -105,7 +105,9 @@ nav {
 
 .team-index-list {
   width: 30%;
-  overflow: scroll; }
+  overflow: scroll;
+  min-width: 270px;
+  max-width: 270px; }
   .team-index-list li {
     position: relative;
     overflow: hidden; }
@@ -159,7 +161,7 @@ nav {
   100% {
     opacity: 1; } }
 .team-show {
-  width: 70%;
+  width: 100%;
   background: #15171a;
   overflow: scroll;
   animation: team-fade-in 1s; }
