@@ -208,10 +208,22 @@ nav {
 
 .team-logo {
   width: 100px;
-  height: 100%; }
+  height: 100px;
+  position: relative;
+  top: 125px;
+  margin: 0 auto; }
 
 .logo-stats {
-  margin: auto 0; }
+  position: relative;
+  min-width: 200px;
+  height: 100%;
+  margin-left: 25px;
+  text-align: right; }
+  .logo-stats > ul {
+    position: absolute;
+    top: 345px; }
+    .logo-stats > ul li {
+      padding: 10px 0; }
 
 .stats {
   display: flex;
@@ -240,7 +252,8 @@ nav {
     letter-spacing: 0.1em;
     color: #8b9199;
     margin-bottom: 10px;
-    text-align: center; }
+    text-align: center;
+    height: 30px; }
   .player-list-item img {
     width: 150px;
     margin-bottom: 2em; }
@@ -264,6 +277,9 @@ nav {
 .player-role {
   text-transform: uppercase;
   letter-spacing: 0.2em; }
+
+.social-link:hover {
+  color: white; }
 
 .match-index-list {
   width: 100%;

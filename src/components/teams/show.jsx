@@ -26,12 +26,11 @@ class TeamShow extends React.Component {
                   jungle: "Jungle",
                   support: "Support",
                   adcarry: "Bot Lane"};
-    const socialMedia = {twitter: "Twitter",
-                        facebook: "Facebook",
-                        twitch: "Twitch",
-                        youtube: "YouTube",
-                        instagram: "Instagram",
-                        azubu: "Azubu"};
+    const socialMedia = {twitter: <i class="fab fa-twitter"></i>,
+                        facebook: <i class="fab fa-facebook"></i>,
+                        twitch: <i class="fab fa-twitch"></i>,
+                        youtube: <i class="fab fa-youtube"></i>,
+                        instagram: <i class="fab fa-instagram"></i>};
 
     this.starters = {};
 
@@ -55,14 +54,16 @@ class TeamShow extends React.Component {
             url = socialNetworks[platform];
           }
 
-          socials.push(<li key={player.id + i}>
-            <Link to={url}>{socialMedia[platform]}</Link>
-          </li>)
-
-          socials.push(
-            <li key={player.id + player.name.length + i}> | </li>
-          )
-          i+=1;
+          if (socialMedia[platform]) {
+            socials.push(<li key={player.id + i}>
+              <Link className='social-link' to={url}>{socialMedia[platform]}</Link>
+            </li>)
+  
+            socials.push(
+              <li key={player.id + player.name.length + i}> | </li>
+            )
+            i+=1;
+          }
         }
         playerOrder += 1;
 
@@ -150,6 +151,7 @@ class TeamShow extends React.Component {
       const { team } = this.props;
       const players = this.buildPlayers();
       // const playerStats = this.playerStats();
+      debugger
 
       return (
         <section className="team-show" id="team-show"
@@ -162,6 +164,12 @@ class TeamShow extends React.Component {
               <ul>
                 <li className="logo-stats">
                   <img className="team-logo" src={team.logoUrl}/>
+                  <ul>
+                    <li>Average Kills</li>
+                    <li>Average Assists</li>
+                    <li>Average Deaths</li>
+                    <li>Average Kill Participation</li>
+                  </ul>
                 </li>
                 {players}
               </ul>
