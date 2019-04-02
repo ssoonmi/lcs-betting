@@ -172,9 +172,10 @@ nav {
     height: 100%;
     width: 100%; }
   .team-show h2 {
-    font-size: 30px;
+    font-size: 36px;
     font-family: "montserrat";
     text-align: center;
+    font-weight: 700;
     color: #c9aa71; }
   .team-show::-webkit-scrollbar {
     height: 14px;

@@ -26,11 +26,11 @@ class TeamShow extends React.Component {
                   jungle: "Jungle",
                   support: "Support",
                   adcarry: "Bot Lane"};
-    const socialMedia = {twitter: <i class="fab fa-twitter"></i>,
-                        facebook: <i class="fab fa-facebook"></i>,
-                        twitch: <i class="fab fa-twitch"></i>,
-                        youtube: <i class="fab fa-youtube"></i>,
-                        instagram: <i class="fab fa-instagram"></i>};
+    const socialMedia = {twitter: <i className="fab fa-twitter"></i>,
+                        facebook: <i className="fab fa-facebook"></i>,
+                        twitch: <i className="fab fa-twitch"></i>,
+                        youtube: <i className="fab fa-youtube"></i>,
+                        instagram: <i className="fab fa-instagram"></i>};
 
     this.starters = {};
 
