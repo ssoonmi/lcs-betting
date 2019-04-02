@@ -108,6 +108,8 @@ nav {
   overflow: scroll;
   min-width: 270px;
   max-width: 270px; }
+  .team-index-list ul {
+    height: 100%; }
   .team-index-list li {
     position: relative;
     overflow: hidden; }
@@ -207,18 +209,20 @@ nav {
   align-items: center; }
 
 .team-logo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   position: relative;
-  top: 125px;
-  margin: 0 auto; }
+  top: 100px; }
 
 .logo-stats {
   position: relative;
   min-width: 200px;
   height: 100%;
   margin-left: 25px;
-  text-align: right; }
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   .logo-stats > ul {
     position: absolute;
     top: 345px; }

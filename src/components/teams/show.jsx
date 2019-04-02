@@ -86,48 +86,6 @@ class TeamShow extends React.Component {
 
   playerStats(playerId) {
     const { team } = this.props;
-    // const teamStats = {};
-    // const avgKills = [];
-    // const avgAssists = [];
-    // const avgDeaths = [];
-    // const avgKillParticipation = [];
-
-    // team.teamRosterStats.forEach(stat => {
-    //   const playerId = stat.playerId.slice(39);
-
-    //   teamStats[playerId] = stat;
-    // })
-
-    // for (let key in this.starters) {
-    //   const starter = this.starters[key];
-    //   const stat = teamStats[starter];
-    //   debugger
-
-    //   avgKills.push(<li>{stat.averageKills.toFixed(3)}</li>);
-    //   avgAssists.push(<li>{stat.averageAssists.toFixed(3)}</li>);
-    //   avgDeaths.push(<li>{stat.averageDeaths.toFixed(3)}</li>);
-    //   avgKillParticipation.push(<li>{stat.averageKillParticipation.toFixed(3)}</li>);
-    // }
-
-    // return (
-    //   <div className='stats'>
-    //     <ul className='avg-kills'>
-    //       <li>Average Kills</li>
-    //       {avgKills}
-    //     </ul>
-    //     <ul className='avg-assists'>
-    //       <li>Average Assists</li>
-    //       {avgAssists}
-    //     </ul>
-    //     <ul className='avg-deaths'>
-    //       <li>Average Deaths</li>
-    //       {avgDeaths}
-    //     </ul>
-    //     <ul className='avg-kill-participation'>
-    //       {avgKillParticipation}
-    //     </ul>
-    //   </div>
-    // )
 
     for (let i = 0; i < team.teamRosterStats.length; i += 1) {
       const stat = team.teamRosterStats[i];
@@ -150,8 +108,6 @@ class TeamShow extends React.Component {
     if (!this.props.teamLoading) {
       const { team } = this.props;
       const players = this.buildPlayers();
-      // const playerStats = this.playerStats();
-      debugger
 
       return (
         <section className="team-show" id="team-show"
@@ -173,7 +129,6 @@ class TeamShow extends React.Component {
                 </li>
                 {players}
               </ul>
-              {/* {playerStats} */}
             </section>
           </div>
         </section>
