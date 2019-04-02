@@ -185,6 +185,13 @@ nav {
     background: #292d31;
     -webkit-border-radius: 1ex;
     border: 3px solid #0e1012; }
+  .team-show .team-show-roster {
+    height: 100%; }
+    .team-show .team-show-roster > ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%; }
 
 .team-index-logo {
   width: 75%;
@@ -200,34 +207,59 @@ nav {
   align-items: center; }
 
 .team-logo {
-  width: 15vw;
-  height: 100%;
-  margin-right: 2vw; }
+  width: 100px;
+  height: 100%; }
+
+.logo-stats {
+  margin: auto 0; }
+
+.stats {
+  display: flex;
+  flex-direction: column; }
+  .stats ul {
+    display: flex;
+    flex-direction: row; }
 
 .player-list-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px 0; }
+  margin: 50px 0;
+  max-width: 150px;
+  height: 100%;
+  position: relative; }
   .player-list-item h1 {
     color: #5d9ca3;
-    font-size: 2em;
+    font-size: 1em;
     letter-spacing: 2px;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-bottom: 15px; }
   .player-list-item h3 {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.1em;
     color: #8b9199;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: center; }
   .player-list-item img {
-    width: 350px;
+    width: 150px;
     margin-bottom: 2em; }
-  .player-list-item ul {
+  .player-list-item .player-socials {
     display: flex; }
-    .player-list-item ul li {
+    .player-list-item .player-socials li {
       padding: 0 5px;
-      font-size: 18px; }
+      font-size: 14px; }
+  .player-list-item .empty-socials {
+    height: 10px; }
+
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  position: absolute;
+  top: 275px; }
+  .player-stats > li {
+    padding: 10px 0; }
 
 .player-role {
   text-transform: uppercase;

@@ -232,6 +232,15 @@ $team-show-side-margin: 20px
     -webkit-border-radius: 1ex
     border: 3px solid #0e1012
 
+  .team-show-roster
+    height: 100%
+
+    & > ul
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      height: 100%
+
 .team-index-logo
   width: 75%
   position: absolute
@@ -249,41 +258,67 @@ $team-show-side-margin: 20px
   align-items: center
 
 .team-logo
-  width: 15vw
+  width: 100px
   height: 100%
-  margin-right: 2vw
+
+.logo-stats
+  margin: auto 0
+
+.stats 
+  display: flex
+  flex-direction: column
+
+  ul
+    display: flex
+    flex-direction: row
 
 .player-list-item
   display: flex
   flex-direction: column
   align-items: center
   margin: 50px 0
+  max-width: 150px
+  height: 100%
+  position: relative
 
   h1
     color: #5d9ca3
-    font-size: 2em
+    font-size: 1em
     letter-spacing: 2px
     font-weight: 600
+    margin-bottom: 15px
 
   h3
-    font-size: 20px
+    font-size: 14px
     font-weight: 600
     letter-spacing: .1em
     color: #8b9199
     margin-bottom: 10px
+    text-align: center
 
   img
-    width: 350px
+    width: 150px
     margin-bottom: 2em
 
-  ul
+  .player-socials
     display: flex
 
     li
       padding: 0 5px
-      font-size: 18px
-
+      font-size: 14px
   
+  .empty-socials
+    height: 10px
+
+.player-stats
+  display: flex
+  flex-direction: column
+  margin-top: 20px
+  position: absolute
+  top: 275px
+
+  & > li
+    padding: 10px 0
 
 .player-role
   text-transform: uppercase

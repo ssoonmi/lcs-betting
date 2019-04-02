@@ -41,30 +41,30 @@ export const fetchTeams = () => (dispatch, getState) => {
   });
 };
 
-export const fetchPlayers = () => (dispatch, getState) => {
-  const state = getState();
-  const players = state.players;
-  const tournamentId = state.matches.tournamentId;
-  const playersArr = Object.values(players);
-  const playerData = {};
-  let numReqs = 0;
+// export const fetchPlayers = () => (dispatch, getState) => {
+//   const state = getState();
+//   const players = state.players;
+//   const tournamentId = state.matches.tournamentId;
+//   const playersArr = Object.values(players);
+//   const playerData = {};
+//   let numReqs = 0;
 
-  function receivePlayerData(playerId) {
-    return function () {
-      const data = JSON.parse(this.responseText);
-      playerData[playerId] = data;
-      numReqs += 1;
-      if (playersArr.length == numReqs) {
-        dispatch(receivePlayers(playerData));
-      }
-    }
-  }
+//   function receivePlayerData(playerId) {
+//     return function () {
+//       const data = JSON.parse(this.responseText);
+//       playerData[playerId] = data;
+//       numReqs += 1;
+//       if (playersArr.length == numReqs) {
+//         dispatch(receivePlayers(playerData));
+//       }
+//     }
+//   }
 
-  playersArr.forEach((player) => {
-    const slug = player.slug;
+//   playersArr.forEach((player) => {
+//     const slug = player.slug;
 
-    const oReq = new XMLHttpRequest();
-    oReq.onload = receivePlayerData(player.player);
+//     const oReq = new XMLHttpRequest();
+//     oReq.onload = receivePlayerData(player.player);
 
-  })
-}
+//   })
+// }
